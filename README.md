@@ -1,1 +1,1 @@
-# Computational Intelligence
+# Computational Intelligence (CI)
