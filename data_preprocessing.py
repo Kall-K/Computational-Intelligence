@@ -1,6 +1,8 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import f_classif
+import pandas as pd
+import string
 
 '''
 The following code puts together all of the above steps:
@@ -62,3 +64,23 @@ def ngram_vectorize(train_texts, train_labels, val_texts):
     x_train = selector.transform(x_train).astype('float32')
     x_val = selector.transform(x_val).astype('float32')
     return x_train, x_val
+
+def import_data():
+    file_path = "iphi2802.csv"
+
+    df = pd.read_csv(file_path, encoding='utf-8', delimiter='\t')
+
+    df['text'] = df['text'].apply(remove_punctuation)
+
+    # TODO: concatenate dates
+    
+    return df['text'].tolist(), df['date_min']
+
+def remove_punctuation(text):
+    return text.translate(str.maketrans('', '', string.punctuation))
+
+# def concatenate_dates(date):
+
+
+if __name__ == '__main__':
+    texts, date = import_data()
