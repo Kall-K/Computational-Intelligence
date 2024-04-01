@@ -1,3 +1,28 @@
+import matplotlib.pyplot as plt
+import os
+import re
+import shutil
+import string
+import tensorflow as tf
+
+from tensorflow.python.keras import layers
+from tensorflow.python.keras import losses
+
+max_features = 1000
+
+vectorize_layer = layers.TextVectorization(
+    standardize='lower_and_strip_punctuation',
+    split='whitespace',
+    ngrams=1,
+    max_tokens=max_features,
+    output_mode='tf_idf',
+    output_sequence_length=None,
+    encoding='utf-8'
+)
+
+vectorize_layer.adapt()
+
+
 # import tensorflow as tf
 # import keras
 # from keras import layers
@@ -60,3 +85,4 @@ print('Vocabulary size: {}'.format(len(vectorize_layer.get_vocabulary())))
 train_ds = raw_train_ds.map(vectorize_text)
 val_ds = raw_val_ds.map(vectorize_text)
 test_ds = raw_test_ds.map(vectorize_text)
+

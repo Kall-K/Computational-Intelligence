@@ -1,7 +1,7 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import f_classif
-from sklearn.preprocessing import MinMaxScaler
+# from sklearn.preprocessing import MinMaxScaler
 import pandas as pd
 import string
 import math
@@ -73,6 +73,7 @@ def normalize_date(date):
 def main():
     texts, dates = import_data()
     labels = list(map(lambda d: math.ceil((d[0] + d[1])/2), dates))
+    
     train_texts = ngram_vectorize(texts, texts, labels)
     # print(texts)
     # train_texts = data_preprocess(texts)
@@ -94,10 +95,13 @@ def main():
 
     data = {
         'text': train_texts.toarray().tolist(),
-        'date': labels
+        'avg_date': labels,
+        'min_date': [d[0] for d in dates],
+        'max_date': [d[1] for d in dates]
     }
+
     df = pd.DataFrame(data)
-    df.to_csv('new_data.csv', encoding='utf-8', index=False)
+    df.to_csv('new_data.csv', encoding='utf-8', sep='\t', index=False)
 
 if __name__ == '__main__':
     main()
