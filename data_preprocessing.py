@@ -15,7 +15,7 @@ and using f_classif to calculate feature importance.
 '''
 
 NGRAM = (1,1)
-TOP_K = 1000
+TOP_K = 40 # i have changed it 
 TOKEN_MODE = 'word'
 MIN_DOCUMENT_FREQUENCY = 2
 
@@ -48,7 +48,7 @@ def ngram_vectorize(train_texts, val_texts, train_labels):
     return x_train
 
 def import_data():
-    file_path = "iphi2802.csv"
+    file_path = "iphi2802(2).csv" # i have changrd it
 
     df = pd.read_csv(file_path, encoding='utf-8', delimiter='\t')
 

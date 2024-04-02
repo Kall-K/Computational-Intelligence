@@ -1,0 +1,42 @@
+
+OUTPUT LAYER:
+You must choose the activation function for your output layer based on the type of prediction problem that you are solving.
+
+Specifically, the type of variable that is being predicted.
+
+For example, you may divide prediction problems into two main groups, predicting a categorical variable (classification) 
+and predicting a numerical variable (regression).
+
+If your problem is a regression problem, you should use a linear activation function.
+
+Regression: One node, linear activation.
+
+->If the model is a regressor then the output layer will have only a single neuron
+
+
+
+HIDDEN LAYERS ACTIVATION function:
+Multilayer Perceptron (MLP): ReLU activation function.
+στην παρουσιαση του μιλαει για συναρτηση που πρεπει να ειναι διαφορισιμη 
+η relu ειναι?
+
+================================================================================================================
+There are many rule-of-thumb methods for determining the correct number of neurons to use in the hidden layers, such as the following:
+
+The number of hidden neurons should be between the size of the input layer and the size of the output layer.
+The number of hidden neurons should be 2/3 the size of the input layer, plus the size of the output layer.
+The number of hidden neurons should be less than twice the size of the input layer.
+Most of the problems can be solved by using a single hidden layer with the number of neurons equal to
+the mean of the input and output layer. If less number of neurons is chosen it will lead to underfitting 
+and high statistical bias. Whereas if we choose too many neurons it may lead to overfitting, high variance, 
+and increases the time it takes to train the network.
+
+====================
+LOSS FUNCTION:
+The choice of loss function depends on the task,
+but common ones include mean squared error (MSE) for regression tasks 
+
+======================
+Για τη σύγκλισ:
+Ο αλγόριθμος ΠΔ θεωρείται ότι έχει συγκλίνει όταν η απόλυτη μεταβολή στο
+μέσο τετραγωνικό σφάλμα ανά κύκλο είναι αρκετά μικρή [0.1%,1%]
