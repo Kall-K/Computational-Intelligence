@@ -31,7 +31,6 @@ def ngram_vectorize(train_texts, val_texts, train_labels):
             'min_df': MIN_DOCUMENT_FREQUENCY,
     }
     vectorizer = TfidfVectorizer(**kwargs)
-    # vectorizer = TfidfVectorizer()
 
     # Learn vocabulary from training texts and vectorize training texts.
     x_train = vectorizer.fit_transform(train_texts)
@@ -59,24 +58,51 @@ def import_data():
     return text.translate(str.maketrans('', '', string.punctuation))
 
 def date_in_range(df):
+
+    # contanation of min & max date to a tuple
+    # append all the tuple to a list with date ranges
     date_range = []
     for row in df.itertuples():
         date_range.append((row.date_min, row.date_max))
 
     return date_range
 
-def normalize_date(date):
+# def normalize_date(date):
     min_date = min(date)
     max_date = max(date)
-    return [(x - min_date) / (max_date - min_date) for x in date]
+    return [((x - min_date) / (max_date - min_date)) * 2 - 1 for x in date]
+
+def normalize_date_range(date_ranges):
+
+    #find the min & the max of the pairs with dates
+    min_date = min(min(pair) for pair in date_ranges)
+    max_date = max(max(pair) for pair in date_ranges)
+
+    # normalize each pair to [-1,1]
+    return [((start - min_date) / (max_date - min_date) * 2 - 1, 
+             (end - min_date) / (max_date - min_date) * 2 - 1)
+            for start, end in date_ranges]
+
 
 def main():
+    # extraction of texts and date ranges from the dataset
     texts, dates = import_data()
+
+    # normalization of dates to [-1,1]
+    dates = normalize_date_range(dates)
+
+    # finding the avg of each pair of dates to use it as label 
     labels = list(map(lambda d: math.ceil((d[0] + d[1])/2), dates))
     
+    # call function to tokenize and vectorize texts
     train_texts = ngram_vectorize(texts, texts, labels)
-    # print(texts)
-    # train_texts = data_preprocess(texts)
+
+    min_value = train_texts.min()
+    max_value = train_texts.max()
+
+    print("Minimum value:", min_value)
+    print("Maximum value:", max_value)
+
     print(type(train_texts))
     # with open('text.txt', "w") as file:
     #     for item in train_texts.toarray():
@@ -90,18 +116,23 @@ def main():
     #     for item in train_texts:
     #         file.write("%s\n" % item)
 
-    # print(labels)
-    # print(normalize_date(labels))
 
-    data = {
-        'text': train_texts.toarray().tolist(),
-        'avg_date': labels,
+    # 1st dataframe with normalized range of dates and the avg of each pair of date range
+    df_T1 = pd.DataFrame({
+        'avg_date': [(d[0]+d[1])/2 for d in dates],
         'min_date': [d[0] for d in dates],
         'max_date': [d[1] for d in dates]
-    }
+    })
 
-    df = pd.DataFrame(data)
+    # 2nd dataframe with vectorized texts
+    T2 = train_texts.toarray()
+    df_T2 = pd.DataFrame(T2)
+
+    # concatanation of the 2 frames
+    df = pd.concat([df_T2, df_T1], axis=1)
+    # export to csv file 
     df.to_csv('new_data.csv', encoding='utf-8', sep='\t', index=False)
+
 
 if __name__ == '__main__':
     main()

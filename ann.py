@@ -3,28 +3,22 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import KFold
 from keras.models import Sequential
 from keras.layers import Dense
-from keras import backend as K
+# from keras import backend as K
 import tensorflow as tf
 
 # Read dataset 
-# dataset = np.loadtxt("chd.csv", delimiter=",", skiprows=(1)) # didnt work for my csv
-dtype = [list, int, int, int]
-dataset = np.genfromtxt('new_data.csv', delimiter='\t', skip_header=1, dtype=dtype)
-print(dataset[1])
-# Features normalization
-# norm_dataset = StandardScaler().fit_transform(X=dataset)
-# print(norm_dataset)
+dataset = np.loadtxt("new_data.csv", delimiter="\t", skiprows=(1)) # didnt work for my csv
 
+# Features normalization
+norm_dataset = StandardScaler().fit_transform(X=dataset)
+print(norm_dataset)
+print(type(norm_dataset))
 # Split into input and output
-# X = norm_dataset[:, 0]
-# Y = norm_dataset[:, 1]
-X = dataset[:]
-Y = dataset[:, 1]
-# print(X)
-print(
-    "\n"
-)
-print(Y)
+X = norm_dataset[:, :-3]
+Y = norm_dataset[:, -3]
+
+print(norm_dataset.shape, X.shape, Y.shape)
+
 
 # Split the data to training and testing data 5-Fold
 kfold = KFold(n_splits=5, shuffle=True)
