@@ -5,6 +5,9 @@ from sklearn.feature_selection import f_classif
 import pandas as pd
 import string
 import math
+from scipy.sparse import csr_matrix
+import numpy as np
+
 
 '''
 The following code puts together all of the above steps:
@@ -15,7 +18,7 @@ and using f_classif to calculate feature importance.
 '''
 
 NGRAM = (1,1)
-TOP_K = 40 # i have changed it 
+TOP_K = 1000 # i have changed it 
 TOKEN_MODE = 'word'
 MIN_DOCUMENT_FREQUENCY = 2
 
@@ -47,7 +50,7 @@ def ngram_vectorize(train_texts, val_texts, train_labels):
     return x_train
 
 def import_data():
-    file_path = "iphi2802(2).csv" # i have changrd it
+    file_path = "iphi2802.csv" # i have changrd it
 
     df = pd.read_csv(file_path, encoding='utf-8', delimiter='\t')
 
@@ -83,6 +86,15 @@ def normalize_date_range(date_ranges):
              (end - min_date) / (max_date - min_date) * 2 - 1)
             for start, end in date_ranges]
 
+def remove_zeros(sparse_dataset):
+    non_zero_counts = sparse_dataset.getnnz(axis=1)
+
+    # Find the indices of rows where all columns are zero
+    non_zero_indices = np.where(non_zero_counts > 0)[0]
+
+    # Remove rows with all zero elements
+    filtered_dataset = sparse_dataset[non_zero_indices]
+    return filtered_dataset
 
 def main():
     # extraction of texts and date ranges from the dataset
@@ -108,9 +120,8 @@ def main():
     #     for item in train_texts.toarray():
     #         file.write("%s\n" % item)
 
-    print(len(train_texts.toarray()))
-    print(len(train_texts.toarray()[0]))
     print(train_texts.shape)
+
     # train_texts = MinMaxScaler().fit_transform(train_texts.toarray())
     # with open('text2.txt', "w") as file:
     #     for item in train_texts:
@@ -130,6 +141,13 @@ def main():
 
     # concatanation of the 2 frames
     df = pd.concat([df_T2, df_T1], axis=1)
+
+
+    zero_rows_indices = df.iloc[:, :40].eq(0).all(axis=1)
+
+    # Remove rows where the first 40 values are equal to zero
+    df = df[~zero_rows_indices]
+    
     # export to csv file 
     df.to_csv('new_data.csv', encoding='utf-8', sep='\t', index=False)
 
