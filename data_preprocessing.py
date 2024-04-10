@@ -82,18 +82,21 @@ def normalize_date_range(date_ranges):
     max_date = max(max(pair) for pair in date_ranges)
 
     # normalize each pair to [-1,1]
-    return [((start - min_date) / (max_date - min_date) * 2 - 1, 
-             (end - min_date) / (max_date - min_date) * 2 - 1)
+    # return [((start - min_date) / (max_date - min_date) * 2 - 1, 
+    #          (end - min_date) / (max_date - min_date) * 2 - 1)
+    #         for start, end in date_ranges]
+    return [((start - min_date) / (max_date - min_date), 
+             (end - min_date) / (max_date - min_date))
             for start, end in date_ranges]
 
-def remove_zeros(sparse_dataset):
-    non_zero_counts = sparse_dataset.getnnz(axis=1)
+# def remove_zeros(text):
+    non_zero_counts = text.getnnz(axis=1)
 
     # Find the indices of rows where all columns are zero
     non_zero_indices = np.where(non_zero_counts > 0)[0]
 
     # Remove rows with all zero elements
-    filtered_dataset = sparse_dataset[non_zero_indices]
+    filtered_dataset = text[non_zero_indices]
     return filtered_dataset
 
 def main():
@@ -143,9 +146,9 @@ def main():
     df = pd.concat([df_T2, df_T1], axis=1)
 
 
-    zero_rows_indices = df.iloc[:, :40].eq(0).all(axis=1)
+    zero_rows_indices = df.iloc[:, :TOP_K].eq(0).all(axis=1)
 
-    # Remove rows where the first 40 values are equal to zero
+    # Remove rows where the first 1000 values are equal to zero
     df = df[~zero_rows_indices]
     
     # export to csv file 
