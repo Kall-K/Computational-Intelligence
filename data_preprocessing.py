@@ -1,11 +1,10 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import f_classif
-# from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler
 import pandas as pd
 import string
 import math
-from scipy.sparse import csr_matrix
 import numpy as np
 
 
@@ -20,7 +19,7 @@ and using f_classif to calculate feature importance.
 NGRAM = (1,1)
 TOP_K = 1000 # i have changed it 
 TOKEN_MODE = 'word'
-MIN_DOCUMENT_FREQUENCY = 2
+MIN_DOCUMENT_FREQUENCY = 7
 
 def ngram_vectorize(train_texts, val_texts, train_labels):
     
@@ -38,14 +37,14 @@ def ngram_vectorize(train_texts, val_texts, train_labels):
     # Learn vocabulary from training texts and vectorize training texts.
     x_train = vectorizer.fit_transform(train_texts)
     
-    # Vectorize validation texts.
-    x_val = vectorizer.transform(val_texts)
+    # # Vectorize validation texts.
+    # x_val = vectorizer.transform(val_texts)
 
     # Select top 'k' of the vectorized features.
     selector = SelectKBest(f_classif, k=min(TOP_K, x_train.shape[1]))
     selector.fit(x_train, train_labels)
     x_train = selector.transform(x_train).astype('float32')
-    x_val = selector.transform(x_val).astype('float32')
+    # x_val = selector.transform(x_val).astype('float32')
 
     return x_train
 
@@ -77,10 +76,10 @@ def date_in_range(df):
 
 def normalize_date_range(date_ranges):
 
-    #find the min & the max of the pairs with dates
+    #find the min date & the max date of the pairs with dates
     min_date = min(min(pair) for pair in date_ranges)
     max_date = max(max(pair) for pair in date_ranges)
-
+    
     # normalize each pair to [-1,1]
     # return [((start - min_date) / (max_date - min_date) * 2 - 1, 
     #          (end - min_date) / (max_date - min_date) * 2 - 1)
@@ -103,9 +102,6 @@ def main():
     # extraction of texts and date ranges from the dataset
     texts, dates = import_data()
 
-    # normalization of dates to [-1,1]
-    dates = normalize_date_range(dates)
-
     # finding the avg of each pair of dates to use it as label 
     labels = list(map(lambda d: math.ceil((d[0] + d[1])/2), dates))
     
@@ -119,21 +115,11 @@ def main():
     print("Maximum value:", max_value)
 
     print(type(train_texts))
-    # with open('text.txt', "w") as file:
-    #     for item in train_texts.toarray():
-    #         file.write("%s\n" % item)
-
     print(train_texts.shape)
-
-    # train_texts = MinMaxScaler().fit_transform(train_texts.toarray())
-    # with open('text2.txt', "w") as file:
-    #     for item in train_texts:
-    #         file.write("%s\n" % item)
-
 
     # 1st dataframe with normalized range of dates and the avg of each pair of date range
     df_T1 = pd.DataFrame({
-        'avg_date': [(d[0]+d[1])/2 for d in dates],
+        # 'avg_date': [(d[0]+d[1])/2 for d in dates],
         'min_date': [d[0] for d in dates],
         'max_date': [d[1] for d in dates]
     })
@@ -141,18 +127,18 @@ def main():
     # 2nd dataframe with vectorized texts
     T2 = train_texts.toarray()
     df_T2 = pd.DataFrame(T2)
+    # df_T2 = pd.DataFrame(train_texts)
+
 
     # concatanation of the 2 frames
     df = pd.concat([df_T2, df_T1], axis=1)
 
-
-    zero_rows_indices = df.iloc[:, :TOP_K].eq(0).all(axis=1)
-
     # Remove rows where the first 1000 values are equal to zero
+    zero_rows_indices = df.iloc[:, :TOP_K].eq(0).all(axis=1)
     df = df[~zero_rows_indices]
-    
+
     # export to csv file 
-    df.to_csv('new_data.csv', encoding='utf-8', sep='\t', index=False)
+    df.to_csv('preprocessed_data.csv', encoding='utf-8', sep='\t', index=False)
 
 
 if __name__ == '__main__':
