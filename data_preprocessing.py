@@ -54,7 +54,7 @@ def import_data():
     df = pd.read_csv(file_path, encoding='utf-8', delimiter='\t')
 
     # df['text'] = df['text'].apply(remove_punctuation)
-    return df['text'].tolist(), date_in_range(df)
+    return df['text'].tolist(), df['region_main_id'].tolist(), date_in_range(df)
 
 #def remove_punctuation(text):
     return text.translate(str.maketrans('', '', string.punctuation))
@@ -100,7 +100,7 @@ def normalize_date_range(date_ranges):
 
 def main():
     # extraction of texts and date ranges from the dataset
-    texts, dates = import_data()
+    texts, region_id, dates = import_data()
 
     # finding the avg of each pair of dates to use it as label 
     labels = list(map(lambda d: math.ceil((d[0] + d[1])/2), dates))
@@ -120,6 +120,7 @@ def main():
     # 1st dataframe with normalized range of dates and the avg of each pair of date range
     df_T1 = pd.DataFrame({
         # 'avg_date': [(d[0]+d[1])/2 for d in dates],
+        'region_id': region_id,
         'min_date': [d[0] for d in dates],
         'max_date': [d[1] for d in dates]
     })
