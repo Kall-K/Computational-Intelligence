@@ -103,8 +103,6 @@ for i, (train, test) in enumerate(kfold.split(X)):
     optimizer = SGD(learning_rate=LEARNING_RATE, momentum=MOMENTUM, nesterov=False)
     model.compile(loss=rmse, optimizer=optimizer, metrics=[rmse])
 
-    # early_stopping = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
-
     # Fit model
     history = model.fit(X[train], Y[train], epochs=150, batch_size=100, verbose=0)
   
