@@ -1,4 +1,5 @@
 import os
+import json
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import KFold
@@ -10,7 +11,6 @@ from keras.optimizers import SGD
 from keras.regularizers import l2
 import matplotlib.pyplot as plt
 
-
 # Create folder to save the figures about the loss convergence
 directory_path = 'figures/'
 if not os.path.exists(directory_path):
@@ -20,11 +20,10 @@ if not os.path.exists(directory_path):
 if not os.path.exists('Results.txt'):
     f = open('Results.txt', 'x')
 else:
-    # os.remove('Results.txt') # Use it to delete file 
     f = open('Results.txt', 'a')
 
 # Number of nodes in hidden layer
-NUM_OF_NODES = 20
+NUM_OF_NODES = 30
 # Number of hidden layers
 NUM_OF_LAYERS = 1
 # Dimension of input
@@ -33,35 +32,40 @@ X_DIM = 1001
 LEARNING_RATE = 0.001
 # Momentum of model
 MOMENTUM = 0.2
-# Probability to drop nodes in the input layer
+# Probability to drop out nodes of the input layer
 RI = 0.2
-# Probability to drop nodes in the hidden layer
+# Probability to drop out nodes of the hidden layer
 RH = 0.8
-
+ 
 # Function to normalize dates to [0,1]
 def normalize_date_range(date_ranges):
     #find the min date & the max date of the pairs with dates
     min_date = min(min(pair) for pair in date_ranges)
     max_date = max(max(pair) for pair in date_ranges)
     
-    # normalize each pair to [-1,1]
-    # return [((start - min_date) / (max_date - min_date) * 2 - 1, 
-    #          (end - min_date) / (max_date - min_date) * 2 - 1)
-    #         for start, end in date_ranges]
     return np.array([((start - min_date) / (max_date - min_date), 
              (end - min_date) / (max_date - min_date))
             for start, end in date_ranges])
 
+# Function to standarize dates
+def standarize_date_range(date_ranges):
+    dates = np.hstack(date_ranges)
+    mean_value = np.mean(dates)
+    deviation_value = np.std(dates)
+    return (date_ranges - mean_value) / deviation_value
+    
 # Read dataset 
 dataset = np.loadtxt('preprocessed_data.csv', delimiter='\t', skiprows=(1))
-input=StandardScaler()
-dataset = input.fit_transform(X=dataset)
 # Split into input and output
 X = dataset[:, :-2]
 Y = dataset[:, -2:]
+# Standarization μ=0,σ=1
+X = StandardScaler().fit_transform(X=X)
+Y = standarize_date_range(Y)
 # Normalization to [0,1]
+X = MinMaxScaler().fit_transform(X=X)
 Y = normalize_date_range(Y)
-X = MinMaxScaler().fit_transform(X)
+
 # Split the data to training and testing data 5-Fold
 kfold = KFold(n_splits=5, shuffle=True)
 rmseList = []
@@ -77,7 +81,6 @@ def rmse(y_true, y_pred):
                       0.0, tf.sqrt(tf.reduce_mean(tf.square(y_pred - avg))))
     return error
 
-
 for i, (train, test) in enumerate(kfold.split(X)):
     # Create model
     model = Sequential()
@@ -88,14 +91,15 @@ for i, (train, test) in enumerate(kfold.split(X)):
 
     # Add hidden layers
     for _ in range(NUM_OF_LAYERS):
-        model.add(Dense(NUM_OF_NODES, activation='leaky_relu', kernel_regularizer=l2(0.0001))) 
+        model.add(Dense(NUM_OF_NODES, activation='relu', kernel_regularizer=l2(0.0001))) 
         model.add(Dropout(RH))
 
-    # # Use the following to get different number of nodes for each hidden layer
-    # model.add(Dense(NUM_OF_NODES, activation='leaky_relu', kernel_regularizer=l2(0.0001)))
-    # model.add(Dense(int(NUM_OF_NODES*2), activation='leaky_relu', kernel_regularizer=l2(0.0001)))
-    # model.add(Dense(int(NUM_OF_NODES*5), activation='leaky_relu', kernel_regularizer=l2(0.0001)))
-
+    # # Use the following to get different number of nodes for each hidden layer # # # # 
+    # model.add(Dense(NUM_OF_NODES, activation='relu', kernel_regularizer=l2(0.0001)))
+    # model.add(Dense(int(NUM_OF_NODES*2), activation='relu', kernel_regularizer=l2(0.0001)))
+    # model.add(Dense(int(NUM_OF_NODES*5), activation='relu', kernel_regularizer=l2(0.0001)))
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+ 
     # Output layer
     model.add(Dense(1, activation='linear'))
 
@@ -105,7 +109,7 @@ for i, (train, test) in enumerate(kfold.split(X)):
 
     # Fit model
     history = model.fit(X[train], Y[train], epochs=150, batch_size=100, verbose=0)
-  
+    
     plt.figure()
     plt.plot(history.history['loss'])
     plt.title(f'Nodes:{NUM_OF_NODES} ,Hidden Layers:{NUM_OF_LAYERS}, Fold:{i}')
@@ -122,6 +126,11 @@ for i, (train, test) in enumerate(kfold.split(X)):
     print('Fold:', i, ' RMSE:', scores[0])
     f.write(f'Fold: {i} RMSE: {scores[0]} \n')
 
+    # # SAVE POINTS OF LOSS # # # # # # # # # # # # # # # # # # # # 
+    # file_path= f'convergence/points{NUM_OF_LAYERS}{NUM_OF_NODES}{i}.json'
+    # with open(file_path, "w") as json_file:
+    #     json.dump(history.history['loss'], json_file)
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
 
 print('RMSE: ', np.mean(rmseList))
