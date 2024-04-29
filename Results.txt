@@ -1,33 +1,35 @@
-Fold: 0 RMSE: 0.20661737024784088 
-Fold: 0 RMSE: 0.2125348001718521 
-Fold: 0 RMSE: 0.21269439160823822 
-Fold: 1 RMSE: 0.21107488870620728 
-Fold: 2 RMSE: 0.21009601652622223 
-Fold: 3 RMSE: 0.208272784948349 
-Fold: 4 RMSE: 0.20943361520767212 
-RMSE: 0.21031433939933777 
-Num of nodes in hidden layer:1000 
+Fold: 0 RMSE: 0.9886189699172974 
+Fold: 1 RMSE: 0.9924589395523071 
+Fold: 2 RMSE: 0.9979127049446106 
+Fold: 3 RMSE: 0.992190957069397 
+Fold: 4 RMSE: 0.9880803823471069 
+RMSE: 0.9918523907661438 
+Num of nodes in hidden layer:800 
 Num of hidden layers:1 
 Learning Rate:0.001
 Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
 ---------------------------------
-Fold: 0 RMSE: 0.18067501485347748 
-Fold: 1 RMSE: 0.178911030292511 
-Fold: 2 RMSE: 0.18236739933490753 
-Fold: 3 RMSE: 0.1668650209903717 
-Fold: 4 RMSE: 0.18045438826084137 
-RMSE: 0.1778545707464218 
-Num of nodes in hidden layer:500 
+Fold: 0 RMSE: 0.28727638721466064 
+Fold: 1 RMSE: 0.3019762635231018 
+Fold: 2 RMSE: 0.29270267486572266 
+Fold: 3 RMSE: 0.28509750962257385 
+Fold: 4 RMSE: 0.29709959030151367 
+RMSE: 0.2928304851055145 
+Num of nodes in hidden layer:100 
 Num of hidden layers:1 
 Learning Rate:0.001
 Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
 ---------------------------------
-Fold: 0 RMSE: 0.11775572597980499 
-Fold: 1 RMSE: 0.12111622840166092 
-Fold: 2 RMSE: 0.11553073674440384 
-Fold: 3 RMSE: 0.12167080491781235 
-Fold: 4 RMSE: 0.10910238325595856 
-RMSE: 0.11703517585992813 
+Fold: 0 RMSE: 0.17694731056690216 
+Fold: 1 RMSE: 0.18033429980278015 
+Fold: 2 RMSE: 0.16890168190002441 
+Fold: 3 RMSE: 0.1643877923488617 
+Fold: 4 RMSE: 0.1737232506275177 
+RMSE: 0.1728588670492172 
 Num of nodes in hidden layer:30 
 Num of hidden layers:1 
 Learning Rate:0.001
@@ -35,111 +37,393 @@ Momentum:0.2
 Input Layer Dropout:0.2
 Hidden Layer Dropout:0.8
 ---------------------------------
-Fold: 0 RMSE: 0.1161515936255455 
-Fold: 1 RMSE: 0.11492891609668732 
-Fold: 2 RMSE: 0.11347857862710953 
-Fold: 3 RMSE: 0.12365010380744934 
-Fold: 4 RMSE: 0.11443032324314117 
-RMSE: 0.11652790307998658 
+Fold: 0 RMSE: 0.1488635540008545 
+Fold: 1 RMSE: 0.1621880978345871 
+Fold: 2 RMSE: 0.15224908292293549 
+Fold: 3 RMSE: 0.15149043500423431 
+Fold: 4 RMSE: 0.15040507912635803 
+RMSE: 0.15303924977779387 
+Num of nodes in hidden layer:20 
+Num of hidden layers:1 
+Learning Rate:0.001
+Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.20393040776252747 
+Fold: 1 RMSE: 0.21283333003520966 
+Fold: 2 RMSE: 0.21130074560642242 
+Fold: 3 RMSE: 0.2139461189508438 
+Fold: 4 RMSE: 0.21330302953720093 
+RMSE: 0.21106272637844087 
+Num of nodes in hidden layer:50 
+Num of hidden layers:1 
+Learning Rate:0.001
+Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.19148246943950653 
+Fold: 1 RMSE: 0.18900743126869202 
+Fold: 2 RMSE: 0.18814796209335327 
+Fold: 3 RMSE: 0.19296447932720184 
+Fold: 4 RMSE: 0.18920187652111053 
+RMSE: 0.19016084372997283 
+Num of nodes in hidden layer:40 
+Num of hidden layers:1 
+Learning Rate:0.001
+Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.1965087503194809 
+Fold: 1 RMSE: 0.20191523432731628 
+Fold: 2 RMSE: 0.19542767107486725 
+Fold: 3 RMSE: 0.20175881683826447 
+Fold: 4 RMSE: 0.19204820692539215 
+RMSE: 0.19753173589706421 
 Num of nodes in hidden layer:30 
 Num of hidden layers:2 
 Learning Rate:0.001
 Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
 ---------------------------------
-Fold: 0 RMSE: 0.11609805375337601 
-Fold: 1 RMSE: 0.12354148924350739 
-Fold: 2 RMSE: 0.12465057522058487 
-Fold: 3 RMSE: 0.1222604289650917 
-Fold: 4 RMSE: 0.11112400144338608 
-RMSE: 0.11953490972518921 
+Fold: 0 RMSE: 0.2170296162366867 
+Fold: 1 RMSE: 0.23698823153972626 
+Fold: 2 RMSE: 0.21744520962238312 
+Fold: 3 RMSE: 0.22212687134742737 
+Fold: 4 RMSE: 0.23163364827632904 
+RMSE: 0.2250447154045105 
 Num of nodes in hidden layer:30 
 Num of hidden layers:3 
 Learning Rate:0.001
 Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
 ---------------------------------
-Fold: 0 RMSE: 0.11225490272045135 
-Fold: 1 RMSE: 0.11247943341732025 
-Fold: 2 RMSE: 0.11975846439599991 
-Fold: 3 RMSE: 0.11484097689390182 
-Fold: 4 RMSE: 0.11943025887012482 
-RMSE: 0.11575280725955964 
+Fold: 0 RMSE: 0.22565199434757233 
+Fold: 1 RMSE: 0.21470746397972107 
+Fold: 2 RMSE: 0.22301085293293 
+Fold: 3 RMSE: 0.23314328491687775 
+Fold: 4 RMSE: 0.22606924176216125 
+RMSE: 0.2245165675878525 
 Num of nodes in hidden layer:30 
 Num of hidden layers:3 
 Learning Rate:0.001
 Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
 ---------------------------------
-Fold: 0 RMSE: 0.12059017270803452 
-Fold: 1 RMSE: 0.12593740224838257 
-Fold: 2 RMSE: 0.12238062173128128 
-Fold: 3 RMSE: 0.12645961344242096 
-Fold: 4 RMSE: 0.12983520328998566 
-RMSE: 0.125040602684021 
+Fold: 0 RMSE: 0.1842072308063507 
+Fold: 1 RMSE: 0.20021872222423553 
+Fold: 2 RMSE: 0.19978103041648865 
+Fold: 3 RMSE: 0.20509986579418182 
+Fold: 4 RMSE: 0.20593476295471191 
+RMSE: 0.19904832243919374 
 Num of nodes in hidden layer:30 
-Num of hidden layers:3 
+Num of hidden layers:2 
 Learning Rate:0.001
 Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
 ---------------------------------
-Fold: 0 RMSE: 0.11702772229909897 
-Fold: 1 RMSE: 0.11826138943433762 
-Fold: 2 RMSE: 0.122892364859581 
-Fold: 3 RMSE: 0.12316130846738815 
-Fold: 4 RMSE: 0.11396810412406921 
-RMSE: 0.11906217783689499 
+Fold: 0 RMSE: 0.17361529171466827 
+Fold: 1 RMSE: 0.1812533289194107 
+Fold: 2 RMSE: 0.1715601086616516 
+Fold: 3 RMSE: 0.1741282343864441 
+Fold: 4 RMSE: 0.1734381467103958 
+RMSE: 0.1747990220785141 
 Num of nodes in hidden layer:30 
 Num of hidden layers:1 
 Learning Rate:0.001
 Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
 ---------------------------------
-Fold: 0 RMSE: 0.11149995774030685 
-Fold: 1 RMSE: 0.11842499673366547 
-Fold: 2 RMSE: 0.11458911746740341 
-Fold: 3 RMSE: 0.12332698702812195 
-Fold: 4 RMSE: 0.12232977896928787 
-RMSE: 0.11803416758775712 
+Fold: 0 RMSE: 0.12734515964984894 
+Fold: 1 RMSE: 0.13118968904018402 
+Fold: 2 RMSE: 0.12073968350887299 
+Fold: 3 RMSE: 0.12426085770130157 
+Fold: 0 RMSE: 0.11752776801586151 
+Fold: 1 RMSE: 0.12048804014921188 
+Fold: 2 RMSE: 0.11495658755302429 
+Fold: 3 RMSE: 0.11506588757038116 
+Fold: 4 RMSE: 0.12145007401704788 
+RMSE: 0.11789767146110534 
+Num of nodes in hidden layer:30 
+Num of hidden layers:3 
+Learning Rate:0.001
+Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.2006954401731491 
+Fold: 1 RMSE: 0.20199574530124664 
+Fold: 2 RMSE: 0.1805689036846161 
+Fold: 3 RMSE: 0.18606379628181458 
+Fold: 4 RMSE: 0.1978614628314972 
+RMSE: 0.19343706965446472 
+Num of nodes in hidden layer:30 
+Num of hidden layers:3 
+Learning Rate:0.001
+Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.19656354188919067 
+Fold: 1 RMSE: 0.18621651828289032 
+Fold: 2 RMSE: 0.2097446322441101 
+Fold: 3 RMSE: 0.19956378638744354 
+Fold: 4 RMSE: 0.20071572065353394 
+RMSE: 0.19856083989143372 
+Num of nodes in hidden layer:30 
+Num of hidden layers:3 
+Learning Rate:0.001
+Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.2881367802619934 
+Fold: 1 RMSE: 0.2930324971675873 
+Fold: 2 RMSE: 0.2870733141899109 
+Fold: 3 RMSE: 0.29022979736328125 
+Fold: 4 RMSE: 0.292564332485199 
+RMSE: 0.29020734429359435 
+Num of nodes in hidden layer:30 
+Num of hidden layers:3 
+Learning Rate:0.001
+Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.19125108420848846 
+Fold: 1 RMSE: 0.19527797400951385 
+Fold: 2 RMSE: 0.19622749090194702 
+Fold: 3 RMSE: 0.19429761171340942 
+Fold: 4 RMSE: 0.19107423722743988 
+RMSE: 0.19362567961215973 
+Num of nodes in hidden layer:30 
+Num of hidden layers:3 
+Learning Rate:0.001
+Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.22791849076747894 
+Fold: 1 RMSE: 0.22588957846164703 
+Fold: 2 RMSE: 0.23036256432533264 
+Fold: 3 RMSE: 0.21241134405136108 
+Fold: 4 RMSE: 0.22356173396110535 
+RMSE: 0.22402874231338502 
+Num of nodes in hidden layer:30 
+Num of hidden layers:3 
+Learning Rate:0.001
+Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.1770631968975067 
+Fold: 1 RMSE: 0.16550369560718536 
+Fold: 2 RMSE: 0.17313532531261444 
+Fold: 3 RMSE: 0.17441131174564362 
+Fold: 4 RMSE: 0.16461676359176636 
+RMSE: 0.1709460586309433 
+Num of nodes in hidden layer:30 
+Num of hidden layers:1 
+Learning Rate:0.001
+Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.16629548370838165 
+Fold: 1 RMSE: 0.1767774522304535 
+Fold: 2 RMSE: 0.16429202258586884 
+Fold: 3 RMSE: 0.17960910499095917 
+Fold: 4 RMSE: 0.16795600950717926 
+RMSE: 0.17098601460456847 
+Num of nodes in hidden layer:30 
+Num of hidden layers:1 
+Learning Rate:0.001
+Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.17108933627605438 
+Fold: 1 RMSE: 0.17525316774845123 
+Fold: 2 RMSE: 0.18253560364246368 
+Fold: 3 RMSE: 0.17411476373672485 
+Fold: 4 RMSE: 0.16872672736644745 
+RMSE: 0.17434391975402833 
+Num of nodes in hidden layer:30 
+Num of hidden layers:1 
+Learning Rate:0.001
+Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.165967658162117 
+Fold: 1 RMSE: 0.1713087409734726 
+Fold: 2 RMSE: 0.17275692522525787 
+Fold: 3 RMSE: 0.1714361160993576 
+Fold: 4 RMSE: 0.1687018722295761 
+RMSE: 0.17003426253795623 
+Num of nodes in hidden layer:30 
+Num of hidden layers:1 
+Learning Rate:0.001
+Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.1624646931886673 
+Fold: 1 RMSE: 0.17667032778263092 
+Fold: 2 RMSE: 0.17506922781467438 
+Fold: 3 RMSE: 0.16694208979606628 
+Fold: 4 RMSE: 0.17989136278629303 
+RMSE: 0.1722075402736664 
+Num of nodes in hidden layer:30 
+Num of hidden layers:1 
+Learning Rate:0.001
+Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.17140783369541168 
+Fold: 1 RMSE: 0.1764039546251297 
+Fold: 2 RMSE: 0.17559152841567993 
+Fold: 3 RMSE: 0.16708575189113617 
+Fold: 4 RMSE: 0.18210257589817047 
+RMSE: 0.1745183289051056 
+Num of nodes in hidden layer:30 
+Num of hidden layers:1 
+Learning Rate:0.001
+Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.6505634784698486 
+Fold: 1 RMSE: 0.651229202747345 
+Fold: 2 RMSE: 0.6650477051734924 
+Fold: 3 RMSE: 0.644112229347229 
+Fold: 4 RMSE: 0.6561107635498047 
+RMSE: 0.6534126758575439 
+Num of nodes in hidden layer:30 
+Num of hidden layers:1 
+Learning Rate:0.001
+Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 4.400387763977051 
+Fold: 1 RMSE: 4.4203009605407715 
+Fold: 2 RMSE: 4.4036030769348145 
+Fold: 3 RMSE: 4.418078422546387 
+Fold: 4 RMSE: 4.411333084106445 
+RMSE: 4.410740661621094 
+Num of nodes in hidden layer:300 
+Num of hidden layers:1 
+Learning Rate:0.001
+Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.17765139043331146 
+Fold: 1 RMSE: 0.1740499585866928 
+Fold: 2 RMSE: 0.1652095466852188 
+Fold: 3 RMSE: 0.16463249921798706 
+Fold: 4 RMSE: 0.17293110489845276 
+RMSE: 0.17089489996433258 
+Num of nodes in hidden layer:30 
+Num of hidden layers:1 
+Learning Rate:0.001
+Momentum:0.2
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.16616840660572052 
+Fold: 1 RMSE: 0.1719396710395813 
+Fold: 2 RMSE: 0.17785103619098663 
+Fold: 3 RMSE: 0.17471958696842194 
+Fold: 4 RMSE: 0.17765194177627563 
+RMSE: 0.1736661285161972 
 Num of nodes in hidden layer:30 
 Num of hidden layers:1 
 Learning Rate:0.001
 Momentum:0.6
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
 ---------------------------------
-Fold: 0 RMSE: 0.10985899716615677 
-Fold: 1 RMSE: 0.10883226990699768 
-Fold: 2 RMSE: 0.10870540142059326 
-Fold: 3 RMSE: 0.11101622134447098 
-Fold: 4 RMSE: 0.11785691231489182 
-RMSE: 0.1112539604306221 
+Fold: 0 RMSE: 0.17138417065143585 
+Fold: 1 RMSE: 0.15889953076839447 
+Fold: 2 RMSE: 0.16535885632038116 
+Fold: 3 RMSE: 0.1611434668302536 
+Fold: 4 RMSE: 0.16405834257602692 
+RMSE: 0.1641688734292984 
 Num of nodes in hidden layer:30 
 Num of hidden layers:1 
-Learning Rate:0.05
+Learning Rate:0.005
 Momentum:0.6
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
 ---------------------------------
-Fold: 0 RMSE: 0.10947726666927338 
-Fold: 1 RMSE: 0.10466495901346207 
-Fold: 2 RMSE: 0.1193842738866806 
-Fold: 3 RMSE: 0.10948114842176437 
-Fold: 4 RMSE: 0.10863831639289856 
-RMSE: 0.1103291928768158 
+Fold: 0 RMSE: 0.11171576380729675 
+Fold: 1 RMSE: 0.11550537496805191 
+Fold: 2 RMSE: 0.11842527985572815 
+Fold: 3 RMSE: 0.12292765825986862 
+Fold: 4 RMSE: 0.12535123527050018 
+RMSE: 0.11878506243228912 
 Num of nodes in hidden layer:30 
 Num of hidden layers:1 
 Learning Rate:0.1
 Momentum:0.6
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
 ---------------------------------
-Fold: 0 RMSE: 0.1844377964735031 
-Fold: 1 RMSE: 0.12230417877435684 
-Fold: 2 RMSE: 0.21469517052173615 
-Fold: 3 RMSE: 0.12196699529886246 
-Fold: 4 RMSE: 0.2063264101743698 
-RMSE: 0.16994611024856568 
+Fold: 0 RMSE: 0.26527148485183716 
+Fold: 1 RMSE: 0.3470273017883301 
+Fold: 2 RMSE: 0.2463652491569519 
+Fold: 3 RMSE: 0.3739871382713318 
+Fold: 4 RMSE: 0.34678414463996887 
+RMSE: 0.31588706374168396 
+Num of nodes in hidden layer:30 
+Num of hidden layers:1 
+Learning Rate:0.9
+Momentum:0.6
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.1580837070941925 
+Fold: 1 RMSE: 0.149774968624115 
+Fold: 2 RMSE: 0.14476053416728973 
+Fold: 3 RMSE: 0.11991667747497559 
+Fold: 4 RMSE: 0.14260625839233398 
+RMSE: 0.14302842915058137 
 Num of nodes in hidden layer:30 
 Num of hidden layers:1 
 Learning Rate:0.6
 Momentum:0.6
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
 ---------------------------------
-Fold: 0 RMSE: 0.1163109615445137 
-Fold: 1 RMSE: 0.12216802686452866 
-Fold: 2 RMSE: 0.10810510814189911 
-Fold: 3 RMSE: 0.11658086627721786 
-Fold: 4 RMSE: 0.1127246841788292 
-RMSE: 0.1151779294013977 
+Fold: 0 RMSE: 0.23000553250312805 
+Fold: 1 RMSE: 0.2122611254453659 
+Fold: 2 RMSE: 0.2506476044654846 
+Fold: 3 RMSE: 0.3361968994140625 
+Fold: 4 RMSE: 0.2628588378429413 
+RMSE: 0.2583939999341965 
+Num of nodes in hidden layer:30 
+Num of hidden layers:1 
+Learning Rate:0.8
+Momentum:0.6
+Input Layer Dropout:0.2
+Hidden Layer Dropout:0.8
+---------------------------------
+Fold: 0 RMSE: 0.17269644141197205 
+Fold: 1 RMSE: 0.15978819131851196 
+Fold: 2 RMSE: 0.17265969514846802 
+Fold: 3 RMSE: 0.17819646000862122 
+Fold: 4 RMSE: 0.16968850791454315 
+RMSE: 0.17060585916042328 
 Num of nodes in hidden layer:30 
 Num of hidden layers:1 
 Learning Rate:0.001
@@ -147,12 +431,12 @@ Momentum:0.2
 Input Layer Dropout:0.2
 Hidden Layer Dropout:0.5
 ---------------------------------
-Fold: 0 RMSE: 0.11367242783308029 
-Fold: 1 RMSE: 0.11858490854501724 
-Fold: 2 RMSE: 0.11252587288618088 
-Fold: 3 RMSE: 0.10995938628911972 
-Fold: 4 RMSE: 0.11923565715551376 
-RMSE: 0.11479565054178238 
+Fold: 0 RMSE: 0.16882556676864624 
+Fold: 1 RMSE: 0.16903075575828552 
+Fold: 2 RMSE: 0.1655402034521103 
+Fold: 3 RMSE: 0.17738471925258636 
+Fold: 4 RMSE: 0.16485576331615448 
+RMSE: 0.1691274017095566 
 Num of nodes in hidden layer:30 
 Num of hidden layers:1 
 Learning Rate:0.001
@@ -160,12 +444,12 @@ Momentum:0.2
 Input Layer Dropout:0.5
 Hidden Layer Dropout:0.5
 ---------------------------------
-Fold: 0 RMSE: 0.10292856395244598 
-Fold: 1 RMSE: 0.11133334785699844 
-Fold: 2 RMSE: 0.11651667952537537 
-Fold: 3 RMSE: 0.11870203912258148 
-Fold: 4 RMSE: 0.10520827770233154 
-RMSE: 0.11093778163194656 
+Fold: 0 RMSE: 0.16130855679512024 
+Fold: 1 RMSE: 0.15918287634849548 
+Fold: 2 RMSE: 0.17285093665122986 
+Fold: 3 RMSE: 0.17078140377998352 
+Fold: 4 RMSE: 0.16780830919742584 
+RMSE: 0.166386416554451 
 Num of nodes in hidden layer:30 
 Num of hidden layers:1 
 Learning Rate:0.001

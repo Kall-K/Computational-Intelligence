@@ -9,6 +9,7 @@ from keras.layers import Dense, Input, Dropout
 import tensorflow as tf
 from keras.optimizers import SGD
 from keras.regularizers import l2
+# from keras.callbacks import EarlyStopping
 import matplotlib.pyplot as plt
 
 # Create folder to save the figures about the loss convergence
@@ -37,7 +38,7 @@ RI = 0.2
 # Probability to drop out nodes of the hidden layer
 RH = 0.8
  
-# Function to normalize dates to [0,1]
+# Custom Function to normalize dates to [0,1]
 def normalize_date_range(date_ranges):
     #find the min date & the max date of the pairs with dates
     min_date = min(min(pair) for pair in date_ranges)
@@ -47,7 +48,7 @@ def normalize_date_range(date_ranges):
              (end - min_date) / (max_date - min_date))
             for start, end in date_ranges])
 
-# Function to standarize dates
+# Custom Function to standarize dates
 def standarize_date_range(date_ranges):
     dates = np.hstack(date_ranges)
     mean_value = np.mean(dates)
@@ -91,13 +92,13 @@ for i, (train, test) in enumerate(kfold.split(X)):
 
     # Add hidden layers
     for _ in range(NUM_OF_LAYERS):
-        model.add(Dense(NUM_OF_NODES, activation='relu', kernel_regularizer=l2(0.0001))) 
+        model.add(Dense(NUM_OF_NODES, activation='relu', kernel_regularizer=l2(0.001))) 
         model.add(Dropout(RH))
 
     # # Use the following to get different number of nodes for each hidden layer # # # # 
-    # model.add(Dense(NUM_OF_NODES, activation='relu', kernel_regularizer=l2(0.0001)))
-    # model.add(Dense(int(NUM_OF_NODES*2), activation='relu', kernel_regularizer=l2(0.0001)))
-    # model.add(Dense(int(NUM_OF_NODES*5), activation='relu', kernel_regularizer=l2(0.0001)))
+    # model.add(Dense(NUM_OF_NODES, activation='relu', kernel_regularizer=l2(0.001)))
+    # model.add(Dense(int(NUM_OF_NODES/2), activation='relu', kernel_regularizer=l2(0.001)))
+    # model.add(Dense(int(NUM_OF_NODES/5), activation='relu', kernel_regularizer=l2(0.001)))
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
  
     # Output layer
@@ -108,14 +109,14 @@ for i, (train, test) in enumerate(kfold.split(X)):
     model.compile(loss=rmse, optimizer=optimizer, metrics=[rmse])
 
     # Fit model
-    history = model.fit(X[train], Y[train], epochs=150, batch_size=100, verbose=0)
-    
+    history = model.fit(X[train], Y[train], epochs=80, batch_size=100, verbose=0)
+   
     plt.figure()
-    plt.plot(history.history['loss'])
-    plt.title(f'Nodes:{NUM_OF_NODES} ,Hidden Layers:{NUM_OF_LAYERS}, Fold:{i}')
+    plt.plot(history.history['loss'], label=f'train')
+    plt.title(f'Nodes:{NUM_OF_NODES},Hidden Layers:{NUM_OF_LAYERS}, Fold:{i}')
     plt.ylabel('loss')
     plt.xlabel('epoch')
-    plt.legend(['train'], loc='upper right')
+    plt.legend(loc='upper right')
     # Determine the name of the figure fold[i]->fig_i
     fig_path = os.path.join(directory_path, f'fig_{i}.png')
     plt.savefig(fig_path)
