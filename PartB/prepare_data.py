@@ -196,6 +196,22 @@ def similarity(x):
 
 
 
-test()
-import_data()
+# test()
+# import_data()
 
+def termination_check(elits, gens):
+    rate = ((elits[-1]-elits[-2])/elits[-1])*100
+    print(rate)
+    c = 0
+    for i in range(gens):
+        if elits[-i-1] - elits[-i-2] < 0:
+            print("smaller")
+            c += 1
+        else: 
+            break
+    if rate < 1 or c == gens:
+        return True
+    else:
+        return False
+     
+print(termination_check([1,2,3,4,10,6,5,7.01], 3))
