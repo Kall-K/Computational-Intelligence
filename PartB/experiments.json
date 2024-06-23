@@ -1,0 +1,12 @@
+[
+    {"n_pop":20, "r_cross": 0.6, "r_mut": 0.00},
+    {"n_pop":20, "r_cross": 0.6, "r_mut": 0.01},
+    {"n_pop":20, "r_cross": 0.6, "r_mut": 0.10},
+    {"n_pop":20, "r_cross": 0.9, "r_mut": 0.01},
+    {"n_pop":20, "r_cross": 0.1, "r_mut": 0.01},
+    {"n_pop":200, "r_cross": 0.6, "r_mut": 0.00},
+    {"n_pop":200, "r_cross": 0.6, "r_mut": 0.01},
+    {"n_pop":200, "r_cross": 0.6, "r_mut": 0.10},
+    {"n_pop":200, "r_cross": 0.9, "r_mut": 0.01},
+    {"n_pop":200, "r_cross": 0.1, "r_mut": 0.01}
+]
